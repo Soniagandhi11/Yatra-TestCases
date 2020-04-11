@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Yatra" duration-ms="49250" started-at="2020-04-11T23:57:31 IST" finished-at="2020-04-11T23:58:20 IST">
+    <groups>
+    </groups>
+    <test name="Yatra-test cases" duration-ms="49250" started-at="2020-04-11T23:57:31 IST" finished-at="2020-04-11T23:58:20 IST">
+      <class name="com.yatra.web.tests.TestCases">
+        <test-method status="PASS" signature="init()[pri:0, instance:com.yatra.web.tests.TestCases@6e6c3152]" name="init" is-config="true" duration-ms="9682" started-at="2020-04-11T23:57:31 IST" finished-at="2020-04-11T23:57:41 IST">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- init -->
+        <test-method status="PASS" signature="checkoutProcessForGuestUser()[pri:1, instance:com.yatra.web.tests.TestCases@6e6c3152]" name="checkoutProcessForGuestUser" duration-ms="37221" started-at="2020-04-11T23:57:41 IST" finished-at="2020-04-11T23:58:18 IST">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- checkoutProcessForGuestUser -->
+        <test-method status="PASS" signature="close()[pri:0, instance:com.yatra.web.tests.TestCases@6e6c3152]" name="close" is-config="true" duration-ms="2316" started-at="2020-04-11T23:58:18 IST" finished-at="2020-04-11T23:58:20 IST">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- close -->
+      </class> <!-- com.yatra.web.tests.TestCases -->
+    </test> <!-- Yatra-test cases -->
+  </suite> <!-- Yatra -->
+</testng-results>

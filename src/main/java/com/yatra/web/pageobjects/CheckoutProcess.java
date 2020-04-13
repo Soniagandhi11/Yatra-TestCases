@@ -9,6 +9,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -54,6 +55,9 @@ public class CheckoutProcess {
 	WebElement proceedto_Payment;
 	@FindBy(xpath = "//input[contains(@class,'fs-md button primary rounded remove')][contains(@value,'Risk My Travel')]")
 	WebElement risk_myTravel;
+	@FindBy(xpath = "//div[@id='bookingCounter']")
+	WebElement bookingCounter;
+	
 
 	// Constructor
 	public CheckoutProcess(WebDriver driver) throws IOException {
@@ -61,6 +65,7 @@ public class CheckoutProcess {
 		prop = Common.get_PropertiesFilesData();
 		PageFactory.initElements(driver, this);
 		javascript = (JavascriptExecutor) driver;
+		wait= new WebDriverWait(driver,40);
 
 	}
 
@@ -68,11 +73,11 @@ public class CheckoutProcess {
 	public String verify_checkOutProcessfor_GuestUser() throws InterruptedException {
 		this.selectFlights_BasisOnSearchCriteria();
 		Common.switchToParentWindow(driver);
+		wait.until(ExpectedConditions.visibilityOf(bookingCounter));
 		dropDown = new Select(title_dropDown);
 		dropDown.selectByValue("Mr");
 		first_Name.sendKeys(prop.getProperty("firstName"));
 		last_Name.sendKeys(prop.getProperty("lastName"));
-		Thread.sleep(6000);
 		emailID.sendKeys(prop.getProperty("emailId"));
 		mobile_Number.sendKeys(prop.getProperty("mobileNumber"));
 		javascript.executeScript("window.scrollTo(0, document.body.scrollHeight)");
@@ -80,7 +85,7 @@ public class CheckoutProcess {
 			contribution_AddOn.click();
 		}
 		proceedto_Payment.click();
-		risk_myTravel.click();
+		wait.until(ExpectedConditions.visibilityOf(risk_myTravel)).click();
 		return (driver.getTitle());
 	}
 
@@ -96,11 +101,11 @@ public class CheckoutProcess {
 		flight_departure.clear();
 		Thread.sleep(2000);
 		flight_departure.sendKeys(prop.getProperty("fromlocation"));
-		Thread.sleep(4000);
+		Thread.sleep(3000);
 		flight_departure.sendKeys(Keys.ENTER);
 		flight_destination.clear();
 		flight_destination.sendKeys(prop.getProperty("tolocation"));
-		Thread.sleep(4000);
+		Thread.sleep(3000);
 		flight_destination.sendKeys(Keys.ENTER);
 		departure_Date.click();
 		driver.findElement(By.xpath("//td[@id='" + Common.getDate() + "']")).click();
